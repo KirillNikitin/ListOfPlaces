@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
+
+.filtered-hidden, .notfavorite-hidden, .notopen-hidden {
+    display: none;
+}
+.hidden {
+    visibility: hidden;
+}
+#serverResponse {
+    display: none;
+}
+.container {
+    padding: 2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+table tr:nth-child(even) {background-color: #f2f2f2;}
+table tr:nth-child(odd) {background-color: #fefefe;}
+
+table tr.active-mode, table tr.active-mode.edit-mode  {
+    background-color: #AAD3E2;
+}
+tr .actions-buttons {
+    visibility: hidden;
+}
+tr.active-mode .actions-buttons {
+    visibility: visible;
+}
+tr.active-mode .actions-block {
+    visibility: hidden;
+}
+
+div[class$="-editmode"] {
+    /*visibility: hidden;*/
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    padding-right: 2px;
+    z-index: -1;
+}
+tr.active-mode.edit-mode div[class$="-editmode"] {
+    /*visibility: visible;*/
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    padding-right: 2px;
+    z-index: 0;
+}
+td {
+    padding: 2px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+td input {
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    height: 2rem;
+    padding: 0 0 0 0.3rem;
+    color: #555;
+}
+td div:first-child {
+    font-size: 1rem;
+    height: 2rem;
+    z-index: 9;
+    color: #555;
+    padding: 0 0 0 0.3rem;
+    margin: 0 0 0 1px;
+    line-height: 2rem;
+}
+
+td div:last-child input {
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    height: 2rem;
+    padding: 0 0 0 0.3rem;
+    width: 95%;
+    color: #0d0d0d;
+}
+td div:last-child input.set-favorite {
+    width: auto;
+    margin-left: 2.6em;
+}
+td.actions div.actions-block, td.actions div.actions-buttons {
+    width: 120px;
+}
+td.actions div.actions-buttons a {
+    padding: 0.2em 0.65em;
+    text-decoration: none;
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #444;
+    cursor: pointer;
+}
+td.actions div.actions-buttons a:hover {
+    background: #f2f2f2;
+    border: 1px solid #ededed;
+}
+td.actions div.actions-buttons a.delete-button {
+    left: 60px;
+}
+.add-place-form {
+    margin: 1em auto;
+    width: 80%;
+}
+.add-place-form label {
+    display: none;
+}
+.add-place-form input {
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    height: 1.8em;
+    padding: 0 0 0 0.3rem;
+    margin: 0.2em 0 0 0;
+    width: auto;
+}
+.add-place-form button
+{
+    padding: 0.2em 0.65em;
+    text-decoration: none;
+    background: #eee;
+    border-radius: 3px;
+    color: #555;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.add-place-form button:hover {
+    background: #f2f2f2;
+    border: 1px solid #ededed;
+}
+.top-bar {
+    margin: 1em auto;
+    width: 80%;
+}
+.top-bar label {
+    margin: 0 0 0 0.65em;
+}
+.top-bar .title-filter {
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    height: 1.8em;
+    padding: 0 0 0 0.3rem;
+    margin: 0.2em 0 0 0;
+    width: auto;
+    font-style: italic;
+}
