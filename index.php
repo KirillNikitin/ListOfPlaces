@@ -12,12 +12,12 @@
     </head>
     <body>
         <!--
-            echo 'Hello, maps!' v.1;
+            echo 'Hello, maps!' v.2;
         -->
         <?php require_once 'process.php'; ?>
 
         <?php 
-            $mysqli = new mysqli('localhost', 'root', '', 'map_crud') or die(mysqli_error($mysqli));
+            $mysqli = new mysqli('remotemysql.com:3306/1oT74g0Xym', '1oT74g0Xym', '3hDxcA0K6u', '1oT74g0Xym') or die(mysqli_error($mysqli));
             $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
         
             function pre_r( $array ) {
@@ -119,33 +119,36 @@
     <script>
         function initMap() {
             var location = {lat: 60.169857, lng: 24.938379}
-            var map = new google.maps.Map(document.getElementById("map"), {
+            this.map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: location
             });
-            let dataListJSON = JSON.parse(window.data);
-            let infoWindow = new google.maps.InfoWindow;
-            Array.prototype.forEach.call(dataListJSON, function(data){
-                let infoDiv = document.createElement('div');
-                infoDiv.textContent = data.title + ' - ' + data.description + '. Opens at: ' + data.opening_hours;
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(data.latitude, data.longitude),
-                    map: map
-                });
-                marker.addListener('click', function(){
-                    infoWindow.setContent(infoDiv);
-                    infoWindow.open(map, marker);
-                });
-            })
-            //showListOnMap(dataListJSON)
+            this.showListOnMap(window.data)
         }
-        function showListOnMap(jsonData) {
-            Array.prototype.forEach.call(jsonData, function(data){
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(data.latitude, data.longitude),
-                    map: map
-                })
-            })
+        window.showListOnMap = function(data) {
+            if(window.mapMarkers && window.mapMarkers.length) {
+                for(i=0; i<window.mapMarkers.length; i++){
+                    window.mapMarkers[i].setMap(null);
+                }
+            }
+            let mapMarkers = [];
+            if(data && data.length) {
+                let infoWindow = new google.maps.InfoWindow;
+                Array.prototype.forEach.call(data, function(d){
+                    let infoDiv = document.createElement('div');
+                    infoDiv.textContent = d.title + ' - ' + d.description + '. Opens at: ' + d.opening_hours;
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(d.latitude, d.longitude),
+                        map: this.map
+                    });
+                    marker.addListener('click', function(){
+                        infoWindow.setContent(infoDiv);
+                        infoWindow.open(this.map, marker);
+                    });
+                    mapMarkers.push(marker);
+                });
+            }            
+            window.mapMarkers = mapMarkers;
         }
 
 

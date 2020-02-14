@@ -19,7 +19,7 @@ body {
     display: none;
 }
 .container {
-    padding: 2em;
+    padding: 6em 2em 2em;
 }
 
 table {
@@ -27,8 +27,9 @@ table {
     width: 80%;
     margin: 0 auto;
 }
-table tr:nth-child(even) {background-color: #f2f2f2;}
-table tr:nth-child(odd) {background-color: #fefefe;}
+table tr {background-color: #ffffff;}
+/*table tr:nth-child(even) {background-color: #f2f2f2;}
+table tr:nth-child(odd) {background-color: #fefefe;}*/
 
 table tr.active-mode, table tr.active-mode.edit-mode  {
     background-color: #AAD3E2;
@@ -148,8 +149,17 @@ td.actions div.actions-buttons a.delete-button {
     border: 1px solid #ededed;
 }
 .top-bar {
-    margin: 1em auto;
-    width: 80%;
+    margin: 0 auto;
+    width: 100%;
+    position: fixed;
+    background: #fff;
+    z-index: 10;
+    padding: 1em;
+    top: 0;
+    left: 0;
+    text-align: left;
+    padding-left: 13%;
+    border-bottom: 1px solid #e1e1e1;
 }
 .top-bar label {
     margin: 0 0 0 0.65em;

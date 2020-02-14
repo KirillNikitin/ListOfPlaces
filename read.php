@@ -2,7 +2,7 @@
 header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_GET["x"], false);
 
-$conn = new mysqli('localhost', 'root', '', 'map_crud') or die(mysqli_error($conn));
+$conn = new mysqli('remotemysql.com:3306/1oT74g0Xym', '1oT74g0Xym', '3hDxcA0K6u', '1oT74g0Xym') or die(mysqli_error($conn));
 $stmt = $conn->prepare("SELECT * FROM data");
 //$stmt->bind_param("", $obj->table);
 $stmt->execute();

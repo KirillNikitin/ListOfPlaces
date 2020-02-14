@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'map_crud') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('remotemysql.com:3306/1oT74g0Xym', '1oT74g0Xym', '3hDxcA0K6u', '1oT74g0Xym') or die(mysqli_error($mysqli));
 $action = (isset($_POST['action'])) ? $_POST['action'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $title = (isset($_POST['title'])) ? $_POST['title'] : '';
