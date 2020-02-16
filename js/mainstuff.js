@@ -5,9 +5,6 @@ var titleFilter = document.getElementById('titleFilter');
 var openOnlyshow = document.getElementById('openOnlyshow');
 var favoriteOnlyshow = document.getElementById('favoriteOnlyshow');
 this.data = null;
-this.filterByTitleIsOn = false;
-this.openOnlyshown = false;
-this.favoriteOnlyshown = false;
 var _this = this;
 
  function getData(){
@@ -197,7 +194,7 @@ function addRow() {
     xmlhttp.send();
 }
 
- function removePlace(id, action) {
+function removePlace(id, action) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
         const serverResponse = document.getElementById('serverResponse');
@@ -210,7 +207,6 @@ function addRow() {
 
     for(var i = 0; i < _this.data.length; i++) {
         if(_this.data[i]['id'] == id) {
-            console.log(i, _this.data[i]);
             _this.data.splice(i, 1);
         }
     }
@@ -336,7 +332,6 @@ function addRowHandlers() {
                                     let arrOfFields = parentRow.getElementsByTagName('input');
                                     let flag = true;
                                     for(let item of arrOfFields){
-                                        console.log(item.value == item.parentElement.parentElement.innerText);
                                         if(item.value == item.parentElement.parentElement.innerText ||
                                           (!item.checked && item.parentElement.parentElement.innerText === 'no') ||
                                           (item.checked && item.parentElement.parentElement.innerText === 'yes')){
@@ -457,11 +452,6 @@ titleFilter.addEventListener('keyup', function(event) {
             addCssClass(elem.parentElement, 'filtered-hidden');  
         }
     }
-    if(_this.arrOfFilteredByTitle.length) {
-        _this.filterByTitleIsOn = true;
-    } else {
-        _this.filterByTitleIsOn = false;
-    }
     showPinsOnPam();
 }, false);
 
@@ -501,11 +491,6 @@ openOnlyshow.addEventListener('change', function() {
             _this.arrOfFilteredOpenOnlyIds = [];
         }
     }
-    if(_this.arrOfFilteredOpenOnly.length) {
-        _this.openOnlyshown = true;
-    } else {
-        _this.openOnlyshown = false;
-    }
     showPinsOnPam();
 }, false);
 
@@ -535,11 +520,6 @@ favoriteOnlyshow.addEventListener('change', function(){
             _this.arrOfFilteredFavorite = [];
             _this.arrOfFilteredFavoriteIds = [];
         }
-    }
-    if(_this.arrOfFilteredFavorite.length) {
-        _this.favoriteOnlyshown = true;
-    } else {
-        _this.favoriteOnlyshown = false;
     }
     showPinsOnPam();
 }, false);
