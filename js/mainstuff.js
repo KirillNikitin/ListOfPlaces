@@ -33,6 +33,12 @@ function addNewPlace(title, description, latitude, longitude, opening_hours, clo
     xhr.open("POST", "./process.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("title="+title+"&action=send&description="+description+"&latitude="+latitude+"&longitude="+longitude+"&opening_hours="+opening_hours+"&closing_hours="+closing_hours+"&picked=0");
+ 
+	xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+		addRow();
+	  }
+	}
  }
 
 function addRow() {
@@ -424,8 +430,7 @@ mainFormSubmit.addEventListener('click', function(event) {
     for(let input of inputArr) {
         valueArr.push(input.value);
     }  
-    addNewPlace(valueArr[0], valueArr[1], valueArr[2], valueArr[3], valueArr[4], valueArr[5]);
-    addRow();   
+    addNewPlace(valueArr[0], valueArr[1], valueArr[2], valueArr[3], valueArr[4], valueArr[5]);   
 }, false)
 
 titleFilter.addEventListener('keyup', function(event) {
