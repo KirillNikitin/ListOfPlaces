@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli('85.10.205.173:3306', 'sql7324007', 'ALJiM7jJBc', 'sql7324007') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('johnny.heliohost.org:3306/kennynik_sql7324007', 'kennynik_sql7324007', 'ALJiM7jJBc', 'kennynik_sparedb') or die(mysqli_error($mysqli));
 $action = (isset($_POST['action'])) ? $_POST['action'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $title = (isset($_POST['title'])) ? $_POST['title'] : '';
