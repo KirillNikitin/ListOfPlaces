@@ -2,7 +2,7 @@
 header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_GET["x"], false);
 
-$conn = new mysqli('johnny.heliohost.org:3306/kennynik_sql7324007', 'kennynik_sql7324007', 'ALJiM7jJBc', 'kennynik_sparedb') or die(mysqli_error($conn));
+$conn = new mysqli('johnny.heliohost.org', 'kennynik_sql7324007', 'ALJiM7jJBc', 'kennynik_sparedb') or die(mysqli_error($conn));
 $stmt = $conn->prepare("SELECT * FROM data");
 //$stmt->bind_param("", $obj->table);
 $stmt->execute();

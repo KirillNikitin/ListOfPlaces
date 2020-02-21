@@ -17,7 +17,7 @@
         <?php require_once 'process.php'; ?>
 
         <?php 
-            $mysqli = new mysqli('johnny.heliohost.org:3306/kennynik_sql7324007', 'kennynik_sql7324007', 'ALJiM7jJBc', 'kennynik_sparedb') or die(mysqli_error($mysqli));
+            $mysqli = new mysqli('johnny.heliohost.org', 'kennynik_sql7324007', 'ALJiM7jJBc', 'kennynik_sparedb') or die(mysqli_error($mysqli));
             $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
         
             function pre_r( $array ) {
