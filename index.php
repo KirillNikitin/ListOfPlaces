@@ -17,7 +17,7 @@
         <?php require_once 'process.php'; ?>
 
         <?php 
-            $mysqli = new mysqli('remotemysql.com:3306/1oT74g0Xym', '1oT74g0Xym', '3hDxcA0K6u', '1oT74g0Xym') or die(mysqli_error($mysqli));
+            $mysqli = new mysqli('remotemysql.com:3306/ve49riIR08', 've49riIR08', '2X0uE6Eeb8', 've49riIR08') or die(mysqli_error($mysqli));
             $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
         
             function pre_r( $array ) {
